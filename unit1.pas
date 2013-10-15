@@ -13,8 +13,11 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Button2: TButton;
+    Edit1: TEdit;
     ListBox1: TListBox;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -43,6 +46,32 @@ begin
   end;
 
 end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var i, wert: Integer;
+  found : boolean;
+begin
+  ListBox1.Clear;
+i := 1;
+found := false;
+wert := StrToInt(Edit1.Text);
+while (found = false) XOR (i=10) do
+begin
+ if zahlen[i] = wert then
+ begin
+   ListBox1.Items.Add('GEFUNDEN!!');
+   ListBOx1.Items.Add('Der gesuchte Wert ' + IntToStr(wert) + ' befindet sich im Array');
+   ListBox1.Items.Add('an Position ' + IntToStr(i) );
+ found := true;
+ end;
+ Inc(i);
+end;
+if found = false then
+begin
+ListBOx1.Items.Add('Der gesuchte WErt wurde nicht gefunden:');
+end;
+end;
+
 
 end.
 
